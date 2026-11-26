@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useEffect, useMemo, useRef } from "react";
 import { GeoJSON, MapContainer, Marker, TileLayer, ZoomControl, useMap, useMapEvents } from "react-leaflet";
-import { MAP_TILE_ATTRIBUTION, MAP_TILE_URL } from "@/lib/config";
+import { MAP_MUTED, MAP_TILE_ATTRIBUTION, MAP_TILE_URL } from "@/lib/config";
 import type { LocationWithCount, MapLayer } from "@/lib/types";
 
 export const HYD_CENTER: [number, number] = [17.4, 78.47];
@@ -86,10 +86,10 @@ export default function MapInner({ locations, layers, activeSlug, flyTo, onHover
       maxBoundsViscosity={0.8}
       zoomControl={false}
       scrollWheelZoom={false}
-      className="bc-map h-full w-full"
+      className={`bc-map h-full w-full${MAP_MUTED ? " bc-muted" : ""}`}
       attributionControl
     >
-      <TileLayer url={MAP_TILE_URL} attribution={MAP_TILE_ATTRIBUTION} subdomains="abcd" detectRetina />
+      <TileLayer url={MAP_TILE_URL} attribution={MAP_TILE_ATTRIBUTION} detectRetina />
       {layers.map((layer) => (
         <GeoJSON
           key={layer.key}

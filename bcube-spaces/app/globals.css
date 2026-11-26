@@ -33,6 +33,7 @@
 }
 
 /* ---------- Leaflet map styling ---------- */
+.bc-muted .leaflet-tile-pane { filter: grayscale(0.75) sepia(0.12) contrast(0.92) brightness(1.05); }
 .leaflet-container { font-family: "Manrope Variable", system-ui, sans-serif; background: #ece9e2; }
 .leaflet-control-attribution { font-size: 10px; background: rgba(255,255,255,.75) !important; }
 .leaflet-bar a { width: 38px !important; height: 38px !important; line-height: 38px !important; color: #0e0e0f !important; font-size: 18px !important; }

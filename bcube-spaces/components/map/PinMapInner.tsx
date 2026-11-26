@@ -3,7 +3,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, ZoomControl, useMap, useMapEvents } from "react-leaflet";
-import { MAP_TILE_ATTRIBUTION, MAP_TILE_URL } from "@/lib/config";
+import { MAP_MUTED, MAP_TILE_ATTRIBUTION, MAP_TILE_URL } from "@/lib/config";
 
 const pin = L.divIcon({ className: "bc-icon", iconSize: [34, 34], iconAnchor: [17, 34], html: '<div class="pin-marker" style="position:relative"></div>' });
 
@@ -23,8 +23,8 @@ function Recenter({ lat, lng }: { lat: number | null; lng: number | null }) {
 export default function PinMapInner({ lat, lng, zoom = 14, onPick }: { lat: number | null; lng: number | null; zoom?: number; onPick?: (lat: number, lng: number) => void }) {
   const has = lat != null && lng != null;
   return (
-    <MapContainer center={has ? [lat!, lng!] : [17.4, 78.47]} zoom={has ? zoom : 9} zoomControl={false} scrollWheelZoom={!!onPick} className="h-full w-full">
-      <TileLayer url={MAP_TILE_URL} attribution={MAP_TILE_ATTRIBUTION} subdomains="abcd" detectRetina />
+    <MapContainer center={has ? [lat!, lng!] : [17.4, 78.47]} zoom={has ? zoom : 9} zoomControl={false} scrollWheelZoom={!!onPick} className={`h-full w-full${MAP_MUTED ? " bc-muted" : ""}`}>
+      <TileLayer url={MAP_TILE_URL} attribution={MAP_TILE_ATTRIBUTION} detectRetina />
       {has && <Marker position={[lat!, lng!]} icon={pin} />}
       <ZoomControl position="bottomright" />
       {onPick && <ClickPicker onPick={onPick} />}
