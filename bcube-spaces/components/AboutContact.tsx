@@ -11,10 +11,10 @@ export default function AboutContact({ settings, showForm = true }: { settings: 
       <div className="container-site grid gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <div className="flex items-center gap-4">
-            <LogoMark className="h-14 w-14 text-ink" />
-            <div>
-              <p className="font-display text-3xl font-semibold tracking-[0.12em]">BCUBE</p>
-              <p className="text-[10px] font-semibold tracking-[0.5em] text-gold-600">SPACES</p>
+            <LogoMark className="h-16 w-auto" />
+            <div className="flex flex-col items-center leading-none">
+              <p className="text-3xl font-semibold tracking-[-0.01em]">B cube</p>
+              <p className="mt-1.5 text-xs font-medium tracking-[0.42em] text-ink-500">spaces</p>
             </div>
           </div>
           <p className="eyebrow mt-12">About us</p>

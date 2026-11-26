@@ -18,13 +18,10 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LogoMark({ className = "" }: { className?: string }) {
-  // Placeholder monogram — replace public/logo.svg / this component with the official BCUBE SPACES logo.
+export function LogoMark({ className = "", light = false }: { className?: string; light?: boolean }) {
+  // Official B Cube Spaces "b" mark. Files live in public/brand/.
   return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
-      <rect x="1" y="1" width="38" height="38" rx="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M12 10h9.5a5 5 0 0 1 0 10H12zM12 20h11a5 5 0 0 1 0 10H12z" fill="none" stroke="#B8945A" strokeWidth="2" />
-      <text x="29.5" y="15" fontSize="7" fontFamily="Georgia,serif" fill="#B8945A">3</text>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={light ? "/brand/logo-mark-light.png" : "/brand/logo-mark-dark.png"} alt="" aria-hidden className={className} width={128} height={199} />
   );
 }
