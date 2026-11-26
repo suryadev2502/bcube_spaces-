@@ -1,0 +1,56 @@
+@import "@fontsource-variable/manrope";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-stone-50 text-ink antialiased font-sans; }
+  h1, h2, h3 { @apply font-display font-medium tracking-tight; }
+  ::selection { @apply bg-gold-200 text-ink; }
+  :focus-visible { @apply outline-none ring-2 ring-gold-400 ring-offset-2 ring-offset-stone-50; }
+}
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-5 sm:px-8; }
+  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-luxe text-gold-600; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-gold { @apply btn bg-gold-500 text-ink hover:bg-gold-400 hover:shadow-[0_10px_30px_-10px_rgba(184,148,90,.8)]; }
+  .btn-dark { @apply btn bg-ink text-white hover:bg-ink-700; }
+  .btn-outline { @apply btn border border-ink/15 text-ink hover:border-ink hover:bg-ink hover:text-white; }
+  .btn-ghost-light { @apply btn border border-white/30 text-white backdrop-blur hover:bg-white hover:text-ink; }
+  .input { @apply w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-ink placeholder:text-stone-400 transition focus:border-gold-400 focus:outline-none focus:ring-4 focus:ring-gold-100; }
+  .label { @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-stone-500; }
+  .chip { @apply inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200; }
+  .chip-on { @apply chip border-ink bg-ink text-white; }
+  .chip-off { @apply chip border-stone-200 bg-white text-ink-600 hover:border-gold-400 hover:text-ink; }
+  .card { @apply rounded-2xl bg-white shadow-card; }
+}
+
+/* ---------- Leaflet map styling ---------- */
+.bc-muted .leaflet-tile-pane { filter: grayscale(0.75) sepia(0.12) contrast(0.92) brightness(1.05); }
+.leaflet-container { font-family: "Manrope Variable", system-ui, sans-serif; background: #ece9e2; }
+.leaflet-control-attribution { font-size: 10px; background: rgba(255,255,255,.75) !important; }
+.leaflet-bar a { width: 38px !important; height: 38px !important; line-height: 38px !important; color: #0e0e0f !important; font-size: 18px !important; }
+.leaflet-bar { border: none !important; box-shadow: 0 8px 24px -8px rgba(14,14,15,.3) !important; border-radius: 12px !important; overflow: hidden; }
+
+.bc-marker { position: relative; display: inline-flex; align-items: center; gap: 6px; transform: translate(-9px, -50%); white-space: nowrap; cursor: pointer; }
+.bc-marker .dot { width: 18px; height: 18px; border-radius: 9999px; background: #0e0e0f; border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(14,14,15,.25), 0 6px 14px -4px rgba(14,14,15,.5); transition: transform .2s, background .2s; flex: none; }
+.bc-marker.zone-within_orr .dot { background: #b8945a; }
+.bc-marker.zone-orr_to_rrr .dot { background: #2b2b2e; }
+.bc-marker.zone-beyond_rrr .dot { background: #7c776c; }
+.bc-marker .label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 9999px; background: rgba(255,255,255,.96); color: #0e0e0f; font-size: 12px; font-weight: 600; box-shadow: 0 6px 18px -6px rgba(14,14,15,.35); border: 1px solid rgba(14,14,15,.06); transition: all .2s; }
+.bc-marker .count { min-width: 18px; padding: 0 5px; height: 18px; border-radius: 9999px; background: #b8945a; color: #0e0e0f; font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.bc-marker:hover .dot, .bc-marker.active .dot { transform: scale(1.25); background: #b8945a; }
+.bc-marker:hover .label, .bc-marker.active .label { background: #0e0e0f; color: #fff; transform: translateY(-1px); }
+.bc-map:not(.show-labels) .bc-marker .label { opacity: 0; pointer-events: none; transform: translateX(-4px); }
+.bc-map:not(.show-labels) .bc-marker:hover .label, .bc-map:not(.show-labels) .bc-marker.active .label { opacity: 1; transform: none; }
+.leaflet-marker-icon.bc-icon { background: transparent; border: none; z-index: 400; }
+.leaflet-marker-icon.bc-icon:hover { z-index: 1000 !important; }
+.pin-marker { width: 34px; height: 34px; border-radius: 50% 50% 50% 0; background: #0e0e0f; transform: rotate(-45deg); border: 3px solid #b8945a; box-shadow: 0 10px 20px -6px rgba(0,0,0,.5); }
+.pin-marker::after { content: ""; position: absolute; inset: 8px; border-radius: 9999px; background: #b8945a; }
